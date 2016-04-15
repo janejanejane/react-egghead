@@ -25276,6 +25276,7 @@
 	var React = __webpack_require__(1);
 	var Main = __webpack_require__(226);
 	var Home = __webpack_require__(227);
+	var Profile = __webpack_require__(228);
 	var Router = __webpack_require__(166);
 	var Route = Router.Route;
 	var IndexRoute = Router.IndexRoute;
@@ -25283,6 +25284,7 @@
 	module.exports = React.createElement(
 	    Route,
 	    { path: '/', component: Main },
+	    React.createElement(Route, { path: 'profile/:username', component: Profile }),
 	    React.createElement(IndexRoute, { component: Home })
 	);
 
@@ -25342,6 +25344,157 @@
 	});
 
 	module.exports = Home;
+
+/***/ },
+/* 228 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var Router = __webpack_require__(166);
+	var UserProfile = __webpack_require__(229);
+	var Repos = __webpack_require__(230);
+	var Notes = __webpack_require__(231);
+
+	var Profile = React.createClass({
+	    displayName: 'Profile',
+
+	    getInitialState: function getInitialState() {
+	        return {
+	            notes: [1, 2, 3],
+	            bio: {
+	                name: 'jean'
+	            },
+	            repos: ['a', 'b', 'c']
+	        };
+	    },
+	    render: function render() {
+	        return React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement(
+	                'div',
+	                { className: 'col-md-4' },
+	                React.createElement(UserProfile, { username: this.props.params.username, bio: this.state.bio })
+	            ),
+	            React.createElement(
+	                'div',
+	                { className: 'col-md-4' },
+	                React.createElement(Repos, { repos: this.state.repos })
+	            ),
+	            React.createElement(
+	                'div',
+	                { className: 'col-md-4' },
+	                React.createElement(Notes, { notes: this.state.notes })
+	            )
+	        );
+	    }
+	});
+
+	module.exports = Profile;
+
+/***/ },
+/* 229 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var UserProfile = React.createClass({
+	    displayName: 'UserProfile',
+
+	    render: function render() {
+	        return React.createElement(
+	            'div',
+	            null,
+	            React.createElement(
+	                'p',
+	                null,
+	                'UserProfile'
+	            ),
+	            React.createElement(
+	                'p',
+	                null,
+	                'username: ',
+	                this.props.username,
+	                ' '
+	            ),
+	            React.createElement(
+	                'p',
+	                null,
+	                'bio: ',
+	                this.props.bio.name,
+	                ' '
+	            )
+	        );
+	    }
+	});
+
+	module.exports = UserProfile;
+
+/***/ },
+/* 230 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var Repos = React.createClass({
+	    displayName: 'Repos',
+
+	    render: function render() {
+	        return React.createElement(
+	            'div',
+	            null,
+	            React.createElement(
+	                'p',
+	                null,
+	                'Repos'
+	            ),
+	            React.createElement(
+	                'p',
+	                null,
+	                this.props.repos
+	            )
+	        );
+	    }
+	});
+
+	module.exports = Repos;
+
+/***/ },
+/* 231 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var Notes = React.createClass({
+	    displayName: 'Notes',
+
+	    render: function render() {
+	        return React.createElement(
+	            'div',
+	            null,
+	            React.createElement(
+	                'p',
+	                null,
+	                'Notes'
+	            ),
+	            React.createElement(
+	                'p',
+	                null,
+	                this.props.notes
+	            )
+	        );
+	    }
+	});
+
+	module.exports = Notes;
 
 /***/ }
 /******/ ]);
