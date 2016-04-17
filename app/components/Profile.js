@@ -1,11 +1,11 @@
 var React = require( 'react' );
 var Router = require( 'react-router' );
-var UserProfile = require( './Github/UserProfile' );
-var Repos = require( './Github/Repos' );
-var Notes = require( './Notes/Notes' );
+import UserProfile from './Github/UserProfile';
+import Repos from './Github/Repos';
+import Notes from './Notes/Notes';
 var ReactFireMixin = require( 'reactfire' );
 var Firebase = require( 'firebase' );
-var helpers = require( '../utils/helpers' );
+import getGithubInfo from '../utils/helpers'
 
 var Profile = React.createClass({
     mixins: [ReactFireMixin],
@@ -32,7 +32,7 @@ var Profile = React.createClass({
       var childRef = this.ref.child( username );
       this.bindAsArray( childRef, 'notes' );
 
-      helpers.getGithubInfo( username )
+      getGithubInfo( username )
         .then( function( data ) {
           this.setState({
             bio: data.bio,
