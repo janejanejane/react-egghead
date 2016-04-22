@@ -12,6 +12,16 @@ module.exports ={
                 query: {
                     presets: ['react', 'es2015']
                 }
+            },
+            {
+              test: /\.scss$/,
+              include: /app/,
+              loaders: [
+                'style',
+                'css',
+                'autoprefixer?browsers=last 3 versions',
+                'sass?outputStyle=expanded'
+              ]
             }
         ]
     }
