@@ -1,9 +1,18 @@
 import React from 'react';
 
+var something= {
+  width: "100px",
+  background: "black"
+};
+
 class UserProfile extends React.Component {
   render() {
+    var styleClass = 'normal';
+    if ( this.props.tenant === 'BP' ) {
+      styleClass = 'BP';
+    }
     return (
-        <div>
+        <div className={styleClass}>
             {this.props.bio.avatar_url && <li className="list-group-item"><img src={this.props.bio.avatar_url} className="img-rounded img-reponsive" /></li>}
             {this.props.bio.name && <li className="list-group-item">Name: {this.props.bio.name}</li>}
             {this.props.bio.login && <li className="list-group-item">Username: {this.props.bio.login}</li>}
