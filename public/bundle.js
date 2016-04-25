@@ -24829,6 +24829,11 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var something = {
+	  width: "100px",
+	  background: "black"
+	};
+
 	var UserProfile = function (_React$Component) {
 	  _inherits(UserProfile, _React$Component);
 
@@ -24841,9 +24846,13 @@
 	  _createClass(UserProfile, [{
 	    key: "render",
 	    value: function render() {
+	      var styleClass = 'normal';
+	      if (this.props.tenant === 'BP') {
+	        styleClass = 'BP';
+	      }
 	      return _react2.default.createElement(
 	        "div",
-	        null,
+	        { className: styleClass },
 	        this.props.bio.avatar_url && _react2.default.createElement(
 	          "li",
 	          { className: "list-group-item" },
